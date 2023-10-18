@@ -1,17 +1,23 @@
+//recetas = ["Arroz"];
+//recetas.push("Seco de Pollo");
+//localStorage.setItem("recetas", recetas);
+//localStorage.clear();
+console.log(localStorage.getItem("recetas"));
 
+//clase para guardar la receta
 class Receta {
 	nombre = "";
 	ingredientes = new Map();
 	pasos = "";
+	personas = 0;
 
 	constructor(nom){
 		this.nombre = nom;
 	}
 }
 
-
+//funcion para convertir el Map ingredientes en JSON
 function replacerMap(key, value) {
-
   	if(value instanceof Map) {
     		return {
       			dataType: 'Map',
@@ -22,6 +28,7 @@ function replacerMap(key, value) {
   	}
 }
 
+//funcion para convertir el objeto JSON en Map
 function reviverMap(key, value) {
   	if(typeof value === 'object' && value !== null) {
  		if (value.dataType === 'Map') {
@@ -31,10 +38,13 @@ function reviverMap(key, value) {
   	return value;
 }
 
-function crearReceta(nombre, pasos) {
+//funcion para crear la receta con los datos ingresados
+function crearReceta(nombre, pasos, personas) {
+	// se crea la receta
 	recetaNueva = new Receta(nombre);
 	recetaNueva.pasos = pasos;
-	
+	recetaNueva.personas = personas;
+	//se obtienen los ingredientes y se guardan en el Map ingredientes
 	const lista = document.getElementById("ingredientes");
 	const ingredientes = lista.getElementsByTagName("input");
 	var i;
@@ -44,15 +54,21 @@ function crearReceta(nombre, pasos) {
 		recetaNueva.ingredientes.set(ing, cant);
 	}
 	console.log(recetaNueva);
+	//se conierte la receta en un objeto JSON y se guarda en el local Storage
 	const receta = JSON.stringify(recetaNueva,replacerMap);
 	localStorage.setItem(nombre, receta);
+	//se accede al elemento recien guardado para comprobar que se haya guardado la receta
 	var str = localStorage.getItem(nombre);
 	console.log(str);
+	//lo obtenido se vuelve a convertir en objeto de la clase Receta
 	const nuevo = JSON.parse(str, reviverMap);
 	console.log(nuevo);
+	//se obtienen las recetas guardadas
 	str = localStorage.getItem("recetas");
 	console.log(str);
+	//se comprueba si es que ya existen recetas guardadas
 	if(str != null){
+		//se agrega la nueva receta a la lista de recetas guardadas
 		recetas = JSON.parse(str);
 		if(str.includes(nombre)){
 			console.log("Ya existe una receta con ese nombre");
@@ -60,12 +76,16 @@ function crearReceta(nombre, pasos) {
 		}
 		recetas.push(nombre);
 	}else{
+		//se crea el array que nos sirve para la lista de recetas guardadas
 		recetas = [nombre];
 	}
+	//se convierte la lista de recetas en un objeto JSON y se guarda en el localStorage
 	str = JSON.stringify(recetas);
+	console.log(str);
 	localStorage.setItem("recetas",str);
 }
 
+//funcion para agregar nuevos ingredientes
 function agregarIngrediente(){
 	const nom = document.createElement("label");
 	const nomval = document.createTextNode("Nombre");
@@ -91,3 +111,40 @@ function agregarIngrediente(){
 	ingredientes.insertBefore(br,boton);
 }
 
+//fu()ncion para quitar un ingrediente de la lista
+function quitarIngrediente(){
+	const ingredientes = document.getElementById("ingredientes");
+	const ings = ingredientes.getElementsByTagName("input");
+	const labels = ingredientes.getElementsByTagName("label");
+	const breaks = ingredientes.getElementsByTagName("br");
+	ingredientes.removeChild(ings[ings.length-1]);
+	ingredientes.removeChild(ings[ings.length-1]);
+	ingredientes.removeChild(labels[labels.length-1]);
+	ingredientes.removeChild(labels[labels.length-1]);
+	ingredientes.removeChild(breaks[breaks.length-1]);
+
+}
+
+//funcion para mostrar las recetas guardas
+function mostrarRecetas(){
+	const cuerpo = document.getElementById("body");
+	//se obtiene la lista de recetas
+	const lista = localStorage.getItem("recetas");
+	if(lista === null){
+		console.log("No existen recetas guardadas");
+		return;
+	}
+	console.log(lista);
+	//se obtiene la receta guardada
+	var i;
+	for (i = 0; i < lista.length; i++) {
+		str = lista[i];
+		console.log(str);
+		receta = localStorage.getItem(str);
+		receta = JSON.parse(receta,reviverMap);
+		console.log(receta);
+ 	}
+	var str = localStorage.getItem(nombre);
+	const nuevo = JSON.parse(str, reviverMap);
+	
+}
