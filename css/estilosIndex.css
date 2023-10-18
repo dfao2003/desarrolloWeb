@@ -80,7 +80,6 @@ nav a:hover{
 
 section{
     height: auto;
-    padding: 20px;
 }
 
 .mensaje{
@@ -98,6 +97,7 @@ section{
 
 .recetas{
     margin-top: 30px;
+    padding-bottom: 20px;
 }
 
 .recetas .titulo{
@@ -164,6 +164,66 @@ section{
     flex-direction: row;
 }
 
+.estRec{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #DA2812;
+    overflow: hidden;
+    position: relative;
+    height: 300px;
+    margin-bottom: 20px;
+}
+
+.estRec img{
+    width: 100%;
+    background-color: #F9CE02;
+}
+
+.contRec{
+    border: 1px solid #F6A300;
+    width: 250px;
+    height: auto;
+    padding: 15px;
+    border-radius: 15px;
+    background-color: white;
+    position: absolute;
+    top: 0;
+    margin: 5px;
+}
+
+.titRec{
+    margin-top: 10px;
+    padding: 15px;
+    width: 100%;
+    text-align: center;
+    background-color: #DA2812;
+    color: white;
+    border-top-left-radius: 10px;
+    border-top-left-radius: 10px;
+}
+
+.titcontRec{
+    text-align: center;
+    padding: 5px;
+}
+
+.imgcontRec{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 5px;
+}
+
+.imgcontRec img{
+    width: 150px;
+    background-color: white;
+}
+
+.descripRec{
+    text-align: justify;
+    margin: 5px;
+}
 /** footer ***/
 footer{
     background-color: #F9CE02;
