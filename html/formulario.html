@@ -1,0 +1,22 @@
+<!DOCTYPE HTML>
+<html>
+ 	<head>
+		<script src="/interaccion.js"></script>
+ 	</head>
+		
+	<body>
+		<h2>Describa su Receta</h2>
+		<form action="/interaccion.js">
+			<label for="nombre">Nombre de la Receta</label><br>
+			<input type="text" name="nombre" id="nombre"><br>
+			<label>Lista de Ingredientes</label><br>
+			<label for="ingrediente">Nombre</label>nom
+			<input type="text" name="ingrediente" id="ingrediente">
+			<label for="cantidad">Cantidad</label>
+			<input type="text" name="cantidad" id="cantidad"><br>
+			<label for="pasos">Pasos de la receta</label><br>
+			<textarea name="pasos" id="pasos" rows="50" cols="100"></textarea><br>
+			<input type="button" name="agregar" id="agregar" onclick="crearReceta(this.nombre,this.ingrediente,this.pasos)" value="Agregar Receta"></input>
+ 		</form>
+	</body>
+</html
