@@ -177,6 +177,7 @@ function otraVentana(){
 	var nuevaVentana = window.location.assign("../html/formulario.html");
 	console.log(nuevaVentana.localStorage);
 }
+<<<<<<< HEAD
 
 //funcion para filtrar recetas
 function busqueda(){
@@ -194,3 +195,5 @@ function busqueda(){
 		}
  	}
 }
+=======
+>>>>>>> 3e97627 (Pruebas para mostrar las recetas y cambio de ventanas)
