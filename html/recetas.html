@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+	<head>
+     		<meta charset="utf-8">
+    		<title>Listado de Recetas</title>
+ 		<style>
+     
+ 		</style>
+     		<script src="../javascript/interaccion.js"></script>
+		<script>
+			window.onstorage = event => {
+				if (event.key != 'now') return;
+  				alert(event.key + ':' + event.newValue + " at " + event.url);
+			};
+		</script>
+ 	</head>
+	<body onload="otraVentana()">
+ 		<h1>Listado de Recetas</h1>
+ 	</body>
+</html>

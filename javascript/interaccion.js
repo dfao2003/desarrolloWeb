@@ -127,24 +127,53 @@ function quitarIngrediente(){
 
 //funcion para mostrar las recetas guardas
 function mostrarRecetas(){
-	const cuerpo = document.getElementById("body");
+	const cuerpo = document.body;
 	//se obtiene la lista de recetas
-	const lista = localStorage.getItem("recetas");
+	lista = localStorage.getItem("recetas");
 	if(lista === null){
 		console.log("No existen recetas guardadas");
 		return;
 	}
+	lista = JSON.parse(lista);
 	console.log(lista);
 	//se obtiene la receta guardada
 	var i;
 	for (i = 0; i < lista.length; i++) {
 		str = lista[i];
-		console.log(str);
+		//console.log(str);
 		receta = localStorage.getItem(str);
 		receta = JSON.parse(receta,reviverMap);
-		console.log(receta);
+		//console.log(receta);
+		const nombre = document.createElement("label");
+		const nomval = document.createTextNode(receta.nombre);
+		nombre.append(nomval);
+		cuerpo.appendChild(nombre);
+		cuerpo.appendChild(document.createElement("br"));
+		receta.ingredientes.forEach((value, key) => {
+			const ing = document.createElement("label");
+			const ingval = document.createTextNode(key);
+			ing.append(ingval);
+			cuerpo.appendChild(ing);
+			const cant = document.createElement("label");
+			const cantval = document.createTextNode(value);
+			cant.append(cantval);
+			cuerpo.appendChild(cant);
+			cuerpo.appendChild(document.createElement("br"));
+
+		})
  	}
 	var str = localStorage.getItem(nombre);
 	const nuevo = JSON.parse(str, reviverMap);
 	
+}
+
+//funcion para abrir otra ventana
+function abrirVentana(){
+	var nuevaVentana = window.open("../html/recetas.html");
+
+}
+
+function otraVentana(){
+	var nuevaVentana = window.location.assign("../html/formulario.html");
+	console.log(nuevaVentana.localStorage);
 }
