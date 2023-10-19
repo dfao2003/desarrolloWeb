@@ -1,35 +1,13 @@
 <!DOCTYPE html>
 <html>
-<<<<<<< HEAD
-<<<<<<< HEAD
-	<head>
-     		<meta charset="utf-8">
-    		<title>Listado de Recetas</title>
- 		<style>
-     
- 		</style>
-     		<script src="../javascript/interaccion.js"></script>
-		<script>
-			window.onstorage = event => {
-				if (event.key != 'now') return;
-  				alert(event.key + ':' + event.newValue + " at " + event.url);
-			};
-		</script>
- 	</head>
-	<body>
- 		<h1>Listado de Recetas</h1>
- 	</body>
-</html>
-=======
-=======
->>>>>>> 3e97627 (Pruebas para mostrar las recetas y cambio de ventanas)
     <head>
         <meta charset="UTF-8">
         <title>Recetas</title>
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
         <link rel="stylesheet" type="text/css" href="../css/estilosRecetas.css">
+	<script src="../javascript/interaccion.js"></script>
     </head>
-    <body>
+    <body onload="mostrarRecetas()">
         <div class="contprincipal">
             <div class="headnav">
                 <header>
@@ -48,12 +26,15 @@
                 </nav>
             </div>
             <section>
-                <div class="recetas">
+                <div class="recetas" id="recetas">
                     <div class="boton">
                         <form action="nosotros.html">
                             <input type="submit" value="Agregar Receta">
                         </form>
                     </div>
+		    <div>
+		       <input type="text" id="busqueda" name="busqueda" onkeyup='busqueda()' placeholder="Buscar recetas...">
+      		    </div>
                     <div class="cont_recetas">
                         <div class="card">
                             <div class="titCard">
@@ -92,7 +73,7 @@
                                     Una vez que nuestro pollo al horno con patatas y cebolla esté listo, sácalo del horno y déjalo reposar durante unos minutos antes de cortarlo en porciones. Sirve el pollo al horno con las patatas y cebolla en la misma bandeja, aprovechando todos los jugos y sabores del asado.
                                 </p>
                             </div>
-                        </div>
+			</div>
                     </div>
             </section>
             <footer>
@@ -105,27 +86,4 @@
         </div>
     </body>
 </html>
-<<<<<<< HEAD
->>>>>>> 9c87570 (Breves cambios en el index y sobre nosotros.html)
-=======
-=======
-	<head>
-     		<meta charset="utf-8">
-    		<title>Listado de Recetas</title>
- 		<style>
-     
- 		</style>
-     		<script src="../javascript/interaccion.js"></script>
-		<script>
-			window.onstorage = event => {
-				if (event.key != 'now') return;
-  				alert(event.key + ':' + event.newValue + " at " + event.url);
-			};
-		</script>
- 	</head>
-	<body onload="otraVentana()">
- 		<h1>Listado de Recetas</h1>
- 	</body>
-</html>
->>>>>>> 94391f2 (Pruebas para mostrar las recetas y cambio de ventanas)
->>>>>>> 3e97627 (Pruebas para mostrar las recetas y cambio de ventanas)
+

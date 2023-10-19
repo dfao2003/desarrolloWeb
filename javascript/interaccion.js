@@ -125,6 +125,82 @@ function quitarIngrediente(){
 
 }
 
+//funcion para crear la tarjeta que contiene a la receta
+function crearTarjeta(str){
+	//se obtienen los daots
+	receta = localStorage.getItem(str);
+	receta = JSON.parse(receta, reviverMap);
+	//seccion
+	const seccion = document.getElementById("recetas");
+	//contenedor
+	const contenedor = document.createElement("div");
+	//atributos
+	const attCont = document.createAttribute("class");
+	//se asigna el atributo de contenedor
+	attCont.value = "cont_recetas";
+	contenedor.setAttributeNode(attCont);
+	//se añade el contenedor de la tarjeta
+	//seccion.appendChild(contenedor);
+	//se crea otra division para la tarjeta
+	const tarjeta = document.createElement("div");
+	const attTar = document.createAttribute("class");
+	attTar.value = 'card';
+	tarjeta.setAttributeNode(attTar);
+	contenedor.appendChild(tarjeta);
+	//se crea otra division para el titulo
+	const titulo = document.createElement("div");
+	const attTit = document.createAttribute("class");
+	attTit.value = 'titCard';
+	titulo.setAttributeNode(attTit);
+	tarjeta.appendChild(titulo);
+	//se agrega el header y el texto
+	const header2 = document.createElement("h2");
+	header2.textContent = receta.nombre;
+	titulo.appendChild(header2);
+	//se crea la estructura
+	const estructura = document.createElement("div");
+	const attEstr = document.createAttribute("class");
+	attEstr.value = "estrucCard";
+	estructura.setAttributeNode(attEstr);
+	tarjeta.appendChild(estructura);
+	//se crea la division para la imagen
+	const divImg = document.createElement('div');
+	const attImg = document.createAttribute('class');
+	attImg.value = 'imgCard';
+	divImg.setAttributeNode(attImg);
+	estructura.appendChild(divImg);
+	//se crea la imagen
+	const imagen = document.createElement('img');
+	const attSrc = document.createAttribute('src');
+	attSrc.value = '../img/recetasinfoto.png';
+	const attAlt = document.createAttribute('alt');
+	attAlt.value = 'Sin Foto';
+	imagen.setAttributeNode(attSrc);
+	imagen.setAttributeNode(attAlt);
+	divImg.appendChild(imagen);
+	//se crea la informacion
+	const divInfo = document.createElement('div');
+	const attInfo = document.createAttribute('class');
+	attInfo.value = 'cardInfo';
+	divInfo.setAttributeNode(attInfo);
+	estructura.appendChild(divInfo);
+	//se crea la division para las personas
+	const divPer = document.createElement('div');
+	const attPer = document.createAttribute('class');
+	attPer.value = 'personas';
+	divPer.setAttributeNode(attPer);
+	divInfo.appendChild(divPer);
+	//se crea el header para las personas
+	const headerPer = document.createElement('h3');
+	headerPer.textContent = receta.personas;
+	divPer.appendChild(headerPer);
+	//se crea la division para los ingredientes
+	const divIng = document.createElement('div');
+	const attIng = document.createAttribute('class');
+
+	seccion.appendChild(contenedor);
+}
+
 //funcion para mostrar las recetas guardas
 function mostrarRecetas(){
 	const cuerpo = document.body;
@@ -140,7 +216,8 @@ function mostrarRecetas(){
 	var i;
 	for (i = 0; i < lista.length; i++) {
 		str = lista[i];
-		//console.log(str);
+		crearTarjeta(str);
+		/*//console.log(str);
 		receta = localStorage.getItem(str);
 		receta = JSON.parse(receta,reviverMap);
 		//console.log(receta);
@@ -160,11 +237,11 @@ function mostrarRecetas(){
 			cuerpo.appendChild(cant);
 			cuerpo.appendChild(document.createElement("br"));
 
-		})
- 	}
+		})*/
+ 	}/*
 	var str = localStorage.getItem(nombre);
 	const nuevo = JSON.parse(str, reviverMap);
-	
+	*/
 }
 
 //funcion para abrir otra ventana
@@ -177,17 +254,19 @@ function otraVentana(){
 	var nuevaVentana = window.location.assign("../html/formulario.html");
 	console.log(nuevaVentana.localStorage);
 }
-<<<<<<< HEAD
 
 //funcion para filtrar recetas
 function busqueda(){
-	var input = document.getElementById('busuqeda');
+	var input = document.getElementById('busqueda');
 	var filtro = input.value.toLowerCase();
-	var lista = document.body.getElementsByTagName('label');
-
+	var contenedor = document.getElementById('recetas')
+	var lista = contenedor.getElementsByClassName('card');
+	console.log(lista);
 	for (i = 0; i < lista.length; i++) {
-   		var nombre = lista[i];
-		var texto = nombre.value;
+   		var nombre = lista[i].getElementsByTagName('h2')[0];
+		console.log(nombre);
+		var texto = nombre.innerText;
+		console.log(texto);
 		if(texto.toLowerCase().indexOf(filtro) > -1){
 			lista[i].style.display = "";
 		}else{
@@ -195,5 +274,4 @@ function busqueda(){
 		}
  	}
 }
-=======
->>>>>>> 3e97627 (Pruebas para mostrar las recetas y cambio de ventanas)
+
