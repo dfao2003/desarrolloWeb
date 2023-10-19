@@ -70,6 +70,18 @@ nav a:hover{
 
  /*************** RECETA DEL DIA   **********/
 
+.filtro{
+    justify-content: center;
+    display: flex;
+}
+
+#busqueda{
+    border-radius: 10px;
+    padding: 10px;
+    margin: 10px;
+    width: 800px;
+}
+
  .recetas{
     margin-top: 30px;
     padding-bottom: 20px;
