@@ -181,12 +181,12 @@ section{
 }
 
 .contRec{
-    border: 1px solid #F6A300;
+    border: 2px solid  #DC3C39;
     width: 250px;
     height: auto;
     padding: 15px;
     border-radius: 15px;
-    background-color: white;
+    background-color: rgba(255,255,255,0.4);
     position: absolute;
     top: 0;
     margin: 5px;
@@ -217,7 +217,7 @@ section{
 
 .imgcontRec img{
     width: 150px;
-    background-color: white;
+    background-color: rgba(255,255,255,0.0);
 }
 
 .descripRec{
