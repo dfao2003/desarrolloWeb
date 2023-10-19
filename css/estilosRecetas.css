@@ -65,3 +65,119 @@ nav a:hover{
     font-size: 18px;
     font-weight: bold;
 }
+
+/* Section */
+
+ /*************** RECETA DEL DIA   **********/
+
+ .recetas{
+    margin-top: 30px;
+    padding-bottom: 20px;
+}
+
+.recetas .titulo{
+    text-align: center;
+    font-size: 17px;
+}
+
+.boton{
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+    margin: 10px;
+}
+
+.boton input{
+    background: #F9CE02;
+    border: none;
+    padding: 7px;
+    width: 200px;
+    height: 40px;
+    border-radius: 10px;
+    transition: 0.3s;
+}
+
+.boton input:hover{
+    cursor: pointer;
+    transform: scale(1.07);
+}
+
+.recetas .cont_recetas{
+    width: 100%;
+    padding: 7px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.card{
+    width: 900px;
+    border-radius: 15px;
+    overflow: hidden;
+    box-sizing: border-box;
+    border: 1px solid #F6A300;
+    height: auto;
+}
+
+.titCard{
+    text-align: center;
+    padding: 10px;
+    background-color: #F6A300;
+}
+
+.imgCard{
+    overflow: hidden;
+    width: 30%;
+    height: 250px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.imgCard img{
+    width: 250px;
+}
+
+.cardInfo{
+    padding: 10px;
+    width: 70%;
+    background-color: #F9CE02;
+}
+
+.personas{
+    height: 35px;
+    display: flex;
+    align-items: center;
+    padding: 5px;
+}
+
+.ingredientes{
+    padding: 5px;
+}
+
+.ingredientes ul{
+    list-style: none;
+    margin-top: 5px;
+}
+
+.estrucCard{
+    display: flex;
+    flex-direction: row;
+}
+
+.intrucciones{
+    padding: 10px;
+}
+
+
+/** footer ***/
+footer{
+    background-color: #F9CE02;
+    display: flex;
+    padding: 7px;
+    text-align: center;
+    height: 100px;
+    justify-content: center;
+    align-items: center;
+}
