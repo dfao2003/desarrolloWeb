@@ -40,17 +40,37 @@ function reviverMap(key, value) {
 
 //funcion para crear la receta con los datos ingresados
 function crearReceta(nombre, pasos, personas) {
+	if(nombre === ''){
+		alert("Rellene todos los campos");
+		return;
+	}
 	// se crea la receta
 	recetaNueva = new Receta(nombre);
+	if(pasos === ''){
+		alert("Rellene todos los campos");
+		return;
+	}
 	recetaNueva.pasos = pasos;
 	recetaNueva.personas = personas;
+	if(personas === ''){
+		alert("Rellene todos los campos");
+		return;
+	}
 	//se obtienen los ingredientes y se guardan en el Map ingredientes
 	const lista = document.getElementById("ingredientes");
 	const ingredientes = lista.getElementsByTagName("input");
 	var i;
 	for (i = 0; i < ingredientes.length; i+=2) {
  		const ing = ingredientes[i].value;
+		if(ing === ''){
+			alert("Rellene todos los campos");
+			return;
+		}
 		const cant = ingredientes[i+1].value;
+		if(cant === ''){
+			alert("Rellene todos los campos");
+			return;
+		}
 		recetaNueva.ingredientes.set(ing, cant);
 	}
 	console.log(recetaNueva);
@@ -72,6 +92,7 @@ function crearReceta(nombre, pasos, personas) {
 		recetas = JSON.parse(str);
 		if(str.includes(nombre)){
 			console.log("Ya existe una receta con ese nombre");
+			alert("Ya existe una receta con ese nombre");
 			return;
 		}
 		recetas.push(nombre);
@@ -100,7 +121,7 @@ function agregarIngrediente(){
 	att2.value = "text";
 	field2.setAttributeNode(att2);
 	const ingredientes = document.getElementById("ingredientes");
-	const boton = document.getElementById("addIng");
+	const boton = document.getElementById("botones");
 	const br = document.createElement("br");
 	nom.append(nomval);
 	cant.append(cantval);
@@ -192,12 +213,48 @@ function crearTarjeta(str){
 	divInfo.appendChild(divPer);
 	//se crea el header para las personas
 	const headerPer = document.createElement('h3');
-	headerPer.textContent = receta.personas;
+	if(receta.personas.toLowerCase().includes('personas') || receta.personas.toLowerCase().includes('persona')){
+		headerPer.textContent = 'Para ' + receta.personas;	  
+	}else{
+		headerPer.textContent = 'Para ' + receta.personas + ' personas';
+	}
 	divPer.appendChild(headerPer);
 	//se crea la division para los ingredientes
 	const divIng = document.createElement('div');
 	const attIng = document.createAttribute('class');
-
+	attIng.value = 'ingredientes';
+	divIng.setAttributeNode(attIng);
+	divInfo.appendChild(divIng);
+	//se crea el header para los ingredientes
+	const headerIng = document.createElement('h3');
+	headerIng.textContent = 'Ingredientes:';
+	divIng.appendChild(headerIng);
+	//se crea la lista de ingredientes
+	const lista = document.createElement('ul');
+	divIng.appendChild(lista);
+	console.log(receta.ingredientes);
+	//se agregan los ingredientes
+	receta.ingredientes.forEach((value, key) => {
+		let li = document.createElement('li');
+		li.innerText = key + ', ' + value + '.';
+		console.log(li);
+		lista.appendChild(li);
+	});
+	//se agrega la division para las instrucciones
+	const divIns = document.createElement('div');
+	const attIns = document.createAttribute('class');
+	attIns.value = 'instrucciones';
+	divIns.setAttributeNode(attIns);
+	tarjeta.appendChild(divIns);
+	//se agrega el header y el parrafo de las instrucciones
+	const headerIns = document.createElement('h3');
+	headerIns.textContent = 'Instrucciones';
+	divIns.appendChild(headerIns);
+	//parrafo
+	const parrafo = document.createElement('p');
+	parrafo.textContent = receta.pasos;
+	divIns.appendChild(parrafo);
+	
 	seccion.appendChild(contenedor);
 }
 
@@ -217,42 +274,7 @@ function mostrarRecetas(){
 	for (i = 0; i < lista.length; i++) {
 		str = lista[i];
 		crearTarjeta(str);
-		/*//console.log(str);
-		receta = localStorage.getItem(str);
-		receta = JSON.parse(receta,reviverMap);
-		//console.log(receta);
-		const nombre = document.createElement("label");
-		const nomval = document.createTextNode(receta.nombre);
-		nombre.append(nomval);
-		cuerpo.appendChild(nombre);
-		cuerpo.appendChild(document.createElement("br"));
-		receta.ingredientes.forEach((value, key) => {
-			const ing = document.createElement("label");
-			const ingval = document.createTextNode(key);
-			ing.append(ingval);
-			cuerpo.appendChild(ing);
-			const cant = document.createElement("label");
-			const cantval = document.createTextNode(value);
-			cant.append(cantval);
-			cuerpo.appendChild(cant);
-			cuerpo.appendChild(document.createElement("br"));
-
-		})*/
- 	}/*
-	var str = localStorage.getItem(nombre);
-	const nuevo = JSON.parse(str, reviverMap);
-	*/
-}
-
-//funcion para abrir otra ventana
-function abrirVentana(){
-	var nuevaVentana = window.open("../html/recetas.html");
-
-}
-
-function otraVentana(){
-	var nuevaVentana = window.location.assign("../html/formulario.html");
-	console.log(nuevaVentana.localStorage);
+	}
 }
 
 //funcion para filtrar recetas

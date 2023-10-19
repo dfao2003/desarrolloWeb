@@ -6,28 +6,39 @@
 		<script>
   			localStorage.setItem("now",Date.now());
   		</script>
+		<link rel="stylesheet" type="text/css" href="../css/estilosformulario.css">
  	</head>
-		
-	<body onload='mostrarRecetas()'>
-
-		<h2>Describa su Receta</h2>
-		<form>
-			<label for="nombre">Nombre de la Receta</label><br>
-			<input type="text" name="nombre" id="nombre" value=""><br>
-			<label for="personas">Cantidad de Personas</label><br>
-			<input type="texto" name="personas" id="personas" value=""><br>
-			<fieldset id="ingredientes">
-				<legend>Lista de Ingredientes</legend>
-				<label for="ingrediente">Nombre</label>
-				<input type="text" name="ingrediente" id="ingrediente">
-				<label for="cantidad">Cantidad</label>
-				<input type="text" name="cantidad" id="cantidad"><br>
-				<button id="addIng" type="button" onclick="agregarIngrediente()">Agregar Ingrediente</button>
-				<button id="remIng" type="button" onclick="quitarIngrediente()">Quitar Ingrediente</button>
-			</fieldset>
-			<label for="pasos">Pasos de la receta</label><br>
-			<textarea name="pasos" id="pasos" rows="50" cols="100"></textarea><br>
-			<button type="button" name="agregar" id="agregar" onclick="crearReceta(nombre.value,pasos.value, personas.value)" >Agregar Receta</button>
- 		</form>
+	<body>
+		<div class="contprincipal">
+			<div class="receta">
+				<div class="titulo">
+					<h2>Describa su Receta</h2>
+				</div>
+				<div class="formu">
+					<form>
+						<label for="nombre">Nombre de la Receta</label>
+						<input type="text" name="nombre" id="nombre" value=""><br>
+						<label for="personas">Cantidad de Personas</label>
+						<input type="text" name="personas" id="personas" value=""><br>
+						<fieldset id="ingredientes">
+							<legend>Lista de Ingredientes</legend>
+							<label for="ingrediente">Nombre</label>
+							<input type="text" name="ingrediente" id="ingrediente"><br>
+							<label for="cantidad">Cantidad</label>
+							<input type="text" name="cantidad" id="cantidad"><br>
+							<div class="fieldbotones" id="botones">
+								<button id="addIng" type="button" onclick="agregarIngrediente()">Agregar Ingrediente</button>
+								<button id="remIng" type="button" onclick="quitarIngrediente()">Quitar Ingrediente</button>
+							</div>
+						</fieldset>
+						<label for="pasos">Pasos de la receta</label>
+						<textarea name="pasos" id="pasos" rows="50" cols="100"></textarea><br>
+						<div class="botonAgre">
+							<button type="button" name="agregar" id="agregar" onclick="crearReceta(nombre.value,pasos.value, personas.value)" >Agregar Receta</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
 	</body>
 </html>
