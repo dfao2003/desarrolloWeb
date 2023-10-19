@@ -177,3 +177,20 @@ function otraVentana(){
 	var nuevaVentana = window.location.assign("../html/formulario.html");
 	console.log(nuevaVentana.localStorage);
 }
+
+//funcion para filtrar recetas
+function busqueda(){
+	var input = document.getElementById('busuqeda');
+	var filtro = input.value.toLowerCase();
+	var lista = document.body.getElementsByTagName('label');
+
+	for (i = 0; i < lista.length; i++) {
+   		var nombre = lista[i];
+		var texto = nombre.value;
+		if(texto.toLowerCase().indexOf(filtro) > -1){
+			lista[i].style.display = "";
+		}else{
+			lista[i].style.display = "none";
+		}
+ 	}
+}
